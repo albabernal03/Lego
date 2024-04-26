@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import os
 import glob
-#import gradio as gr
+import gradio as gr
 
 # Diccionario con los rangos de colores en HSV y los desplazamientos asociados
 color_ranges = {
@@ -107,11 +107,11 @@ def cifrar_frase_con_desplazamiento(frase):
         palabra_cifrada = cifrar(palabra, desplazamiento)
         frase_cifrada += palabra_cifrada + " "
 
-        # Guardar los desplazamientos en un archivo
-        with open("desplazamientos.txt", "w") as f:
-            f.write(", ".join(map(str, desplazamientos)))
+    # Guardar los desplazamientos en un archivo
+    with open("desplazamientos.txt", "w") as f:
+        f.write(", ".join(map(str, desplazamientos)))
 
-    return frase_cifrada.strip(), desplazamientos
+    return frase_cifrada.strip()
 
 
 def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
@@ -123,9 +123,7 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
     return frase_descifrada.strip()
 
 
-
-
-def main():
+'''def main():
     # Define una frase de prueba
     frase = "Hola mundo, mundo mundo!"
 
@@ -136,9 +134,23 @@ def main():
     print("Frase cifrada:", frase_cifrada)
     print("Desplazamientos:", desplazamientos)
 
+    frase_descifrada = descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos)
+    print("Frase descifrada:", frase_descifrada)
+
 # Llama a la función principal para ejecutar el código de prueba
 if __name__ == "__main__":
-    main()
+    main()'''
+
+iface = gr.Interface(
+    fn={"Cifrar": cifrar_frase_con_desplazamiento, "Descifrar": descifrar_frase_con_desplazamiento},
+    inputs=[gr.Textbox(label="Texto"), gr.Slider(1, 25, label="Desplazamiento")],
+    outputs="text",
+    title="Taller de Criptografía con LEGO",
+    description="Utiliza esta herramienta para cifrar o descifrar mensajes usando el cifrado César."
+)
+
+iface.launch()
+
 
 '''# Ejemplo de uso:
 ruta_carpeta = 'imagenes'
