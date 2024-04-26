@@ -22,6 +22,11 @@ En este [repositorio](https://github.com/albabernal03/Lego) queda resuelta la pr
    - [Paso 4: Fotografiar las Claves](#paso-4-fotografiar-las-claves)
    - [Paso 5: Cifrar y Descifrar Mensajes](#paso-5-cifrar-y-descifrar-mensajes)
 
+4. [Código](#código)
+   - [Función de Procesado](#función-de-procesado)
+   - [Función de Cifrar](#función-de-cifrar)
+   - [Función de Descifrar](#función-de-descifrar)
+   
 
 # Taller: Descifrando Secretos con LEGO
 
@@ -122,6 +127,40 @@ Para integrar la funcionalidad de interpretar fotos de piezas de LEGO y determin
 
 ### Paso 5: Cifrar y Descifrar Mensajes
 - Los estudiantes utilizan la aplicación para cifrar y descifrar mensajes utilizando las claves construidas y las imágenes de las piezas de LEGO.
+
+# Código
+
+En esta sección se describe el código utilizado para el procesado de imágenes y las funciones de cifrado y descifrado.
+
+## Función de Procesado
+
+La función de procesado utiliza OpenCV para detectar los colores de las piezas de LEGO en una imagen y determinar el desplazamiento basado en esos colores.
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/78520e82-8b2c-4087-bc0c-a9757aecd3fe)
+
+## Función de Cifrar
+
+La función de cifrar toma un mensaje de texto y una imagen de las piezas de LEGO como entrada. Utiliza el desplazamiento calculado mediante el procesado de la imagen para aplicar un cifrado César al mensaje y devuelve el mensaje cifrado.
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/a16f8f8e-9e47-4f4f-8dda-1dad4cead625)
+
+## Función de Descifrar
+
+La función de descifrar toma un mensaje cifrado y una imagen de las piezas de LEGO como entrada. Utiliza el desplazamiento calculado mediante el procesado de la imagen para aplicar un descifrado César al mensaje y devuelve el mensaje descifrado.
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/b3245784-08f7-4db9-86a7-2ac042183c2d)
+
+## Función de Contar las imágenes de la carpeta
+
+La función de contar las imágenes se encarga de contar todas las imágenes para poder aplicar a cada palabra de la frase a cifrar.
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/29e795a3-00eb-4fe9-8d7b-84815badd56c)
+
+Todo esto cifra utilizando las imágenes de los distintos colores de los legos el mensaje requerido:
+
+
+
+
 
 
 
