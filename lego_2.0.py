@@ -125,48 +125,28 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
 
 '''def main():
     # Define una frase de prueba
-    frase = "Hola mundo, mundo mundo!"
+    frase = "Hola mundo tu!"
 
     # Llama a la función cifrar_frase_con_desplazamiento con la frase de prueba
-    frase_cifrada, desplazamientos = cifrar_frase_con_desplazamiento(frase)
+    frase_cifrada = cifrar_frase_con_desplazamiento(frase)
 
     # Imprime la frase cifrada y los desplazamientos utilizados
     print("Frase cifrada:", frase_cifrada)
-    print("Desplazamientos:", desplazamientos)
 
-    frase_descifrada = descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos)
-    print("Frase descifrada:", frase_descifrada)
+    #frase_descifrada = descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos)
+    #print("Frase descifrada:", frase_descifrada)
 
 # Llama a la función principal para ejecutar el código de prueba
 if __name__ == "__main__":
     main()'''
 
+
 iface = gr.Interface(
-    fn={"Cifrar": cifrar_frase_con_desplazamiento, "Descifrar": descifrar_frase_con_desplazamiento},
-    inputs=[gr.Textbox(label="Texto"), gr.Slider(1, 25, label="Desplazamiento")],
+    fn=cifrar_frase_con_desplazamiento,
+    inputs=gr.Textbox(label="Texto"),
     outputs="text",
     title="Taller de Criptografía con LEGO",
-    description="Utiliza esta herramienta para cifrar o descifrar mensajes usando el cifrado César."
+    description="Utiliza este herramienta para cifrar o descifrar mensajes usando el cifrado César."
 )
 
 iface.launch()
-
-
-'''# Ejemplo de uso:
-ruta_carpeta = 'imagenes'
-num_imagenes = contar_imagenes_en_carpeta(ruta_carpeta, 'jpeg')
-print("Número de imágenes en la carpeta:", num_imagenes)
-
-# Ejemplo de uso
-image_path = 'imagenes/foto2.jpeg'  # Asegúrate de proporcionar la ruta correcta a la imagen
-desplazamiento = procesar_imagen(image_path)
-
-
-# Cifrar un mensaje
-mensaje = "invent"
-mensaje_cifrado = cifrar(mensaje, desplazamiento)
-print("Mensaje cifrado:", mensaje_cifrado)
-
-# Ahora descifrar el mensaje
-mensaje_descifrado = descifrar(mensaje_cifrado, desplazamiento)
-print("Mensaje descifrado:", mensaje_descifrado)'''
