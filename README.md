@@ -136,27 +136,49 @@ En esta sección se describe el código utilizado para el procesado de imágenes
 
 La función de procesado utiliza OpenCV para detectar los colores de las piezas de LEGO en una imagen y determinar el desplazamiento basado en esos colores.
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/78520e82-8b2c-4087-bc0c-a9757aecd3fe)
+![code](https://github.com/albabernal03/Lego/assets/91721855/765bf0ce-f346-44ab-89f5-8ca445f8a9f8)
+
 
 ## Función de Cifrar
 
 La función de cifrar toma un mensaje de texto y una imagen de las piezas de LEGO como entrada. Utiliza el desplazamiento calculado mediante el procesado de la imagen para aplicar un cifrado César al mensaje y devuelve el mensaje cifrado.
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/a16f8f8e-9e47-4f4f-8dda-1dad4cead625)
+![code1](https://github.com/albabernal03/Lego/assets/91721855/d847dfa3-81bf-4cdd-b1d9-32c7f37c83e8)
+
 
 ## Función de Descifrar
 
 La función de descifrar toma un mensaje cifrado y una imagen de las piezas de LEGO como entrada. Utiliza el desplazamiento calculado mediante el procesado de la imagen para aplicar un descifrado César al mensaje y devuelve el mensaje descifrado.
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/b3245784-08f7-4db9-86a7-2ac042183c2d)
+![code1](https://github.com/albabernal03/Lego/assets/91721855/93e1202b-c25f-46d9-a690-28d647b65525)
 
 ## Función de Contar las imágenes de la carpeta
 
 La función de contar las imágenes se encarga de contar todas las imágenes para poder aplicar a cada palabra de la frase a cifrar.
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/29e795a3-00eb-4fe9-8d7b-84815badd56c)
+![code3](https://github.com/albabernal03/Lego/assets/91721855/be42656d-3cd2-4602-9fcd-c5334811bb57)
+
+## Función de Obtener nombres imágenes en carpetas
+
+Esta función se encarga de obtener todos los nombres de las imágenes para poder aplicar a cada palabra de la frase a cifrar.
+
+![code4](https://github.com/albabernal03/Lego/assets/91721855/7b417ca6-043a-4c1d-b421-fe62225ea714)
+
+## Función de Cifrar frase con desplazamiento
+
+Esta función se encarga de cifrar cada una de las palabras de la frase aplicando una imagen diferente en cada ocasión y lo guarda en un fichero txt.
+
+![code5](https://github.com/albabernal03/Lego/assets/91721855/60780645-17db-4cec-a621-2abe69a81ef9)
+
+## Función de Descifrar frase con desplazamiento
+
+Esta función se encarga de descifrar cada una de las palabras de la frase aplicando su imagen correspondiente en cada palabra.
+
+![code6](https://github.com/albabernal03/Lego/assets/91721855/1ff47fb7-4ce2-4f9e-94f4-2fddb49b6d86)
 
 Todo esto cifra utilizando las imágenes de los distintos colores de los legos el mensaje requerido:
+
+![code7](https://github.com/albabernal03/Lego/assets/91721855/e61c1c5f-2bbf-43c1-9647-08a01bf39875)
 
 
 
