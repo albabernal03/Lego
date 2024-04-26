@@ -125,17 +125,16 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
 
 '''def main():
     # Define una frase de prueba
-    frase = "Hola mundo, mundo mundo!"
+    frase = "Hola mundo tu!"
 
     # Llama a la función cifrar_frase_con_desplazamiento con la frase de prueba
-    frase_cifrada, desplazamientos = cifrar_frase_con_desplazamiento(frase)
+    frase_cifrada = cifrar_frase_con_desplazamiento(frase)
 
     # Imprime la frase cifrada y los desplazamientos utilizados
     print("Frase cifrada:", frase_cifrada)
-    print("Desplazamientos:", desplazamientos)
 
-    frase_descifrada = descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos)
-    print("Frase descifrada:", frase_descifrada)
+    #frase_descifrada = descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos)
+    #print("Frase descifrada:", frase_descifrada)
 
 # Llama a la función principal para ejecutar el código de prueba
 if __name__ == "__main__":
