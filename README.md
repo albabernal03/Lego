@@ -180,6 +180,9 @@ Todo esto cifra utilizando las imágenes de los distintos colores de los legos e
 
 ![code7](https://github.com/albabernal03/Lego/assets/91721855/e61c1c5f-2bbf-43c1-9647-08a01bf39875)
 
+Ahora hemos hecho la interfaz usando Gradio:
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/949df851-d9b8-4353-b7dd-bcba192fa4e2)
 
 
 
