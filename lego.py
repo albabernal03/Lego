@@ -15,6 +15,7 @@ color_ranges = {
     'negro': ([0, 0, 0], [180, 255, 50], 5)
 }
 
+
 def procesar_imagen(image_path):
     image = cv2.imread(image_path)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -29,21 +30,26 @@ def procesar_imagen(image_path):
 
     return total_desplazamiento
 
+
 def cifrar(texto, desplazamiento):
     resultado = ""
     for char in texto:
         if char.isalpha():
-            shift = (ord(char.lower()) - ord('a') + desplazamiento) % 26 + ord('a')
+            shift = (ord(char.lower()) - ord('a') +
+                     desplazamiento) % 26 + ord('a')
             resultado += chr(shift) if char.islower() else chr(shift).upper()
         else:
             resultado += char
     return resultado
 
+
 def descifrar(texto_cifrado, desplazamiento):
     return cifrar(texto_cifrado, -desplazamiento)
 
+
 # Ejemplo de uso
-image_path = 'imagenes/humano.png'  # Asegúrate de proporcionar la ruta correcta a la imagen
+# Asegúrate de proporcionar la ruta correcta a la imagen
+image_path = 'imagenes/humano.png'
 desplazamiento = procesar_imagen(image_path)
 mensaje = str(input("Introduce el mensaje a cifrar: "))
 mensaje_cifrado = cifrar(mensaje, desplazamiento)
@@ -52,7 +58,6 @@ print("Mensaje cifrado:", mensaje_cifrado)
 # Ahora descifrar el mensaje
 mensaje_descifrado = descifrar(mensaje_cifrado, desplazamiento)
 print("Mensaje descifrado:", mensaje_descifrado)
-
 
 
 '''# Ejemplo de uso lego 2.0:

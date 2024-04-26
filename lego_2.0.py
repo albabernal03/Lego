@@ -18,6 +18,7 @@ color_ranges = {
     'negro': ([0, 0, 0], [180, 255, 50], 5)
 }
 
+
 def procesar_imagen(image_path):
     image = cv2.imread(image_path)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -32,18 +33,22 @@ def procesar_imagen(image_path):
 
     return total_desplazamiento
 
+
 def cifrar(texto, desplazamiento):
     resultado = ""
     for char in texto:
         if char.isalpha():
-            shift = (ord(char.lower()) - ord('a') + desplazamiento) % 26 + ord('a')
+            shift = (ord(char.lower()) - ord('a') +
+                     desplazamiento) % 26 + ord('a')
             resultado += chr(shift) if char.islower() else chr(shift).upper()
         else:
             resultado += char
     return resultado
 
+
 def descifrar(texto_cifrado, desplazamiento):
     return cifrar(texto_cifrado, -desplazamiento)
+
 
 def contar_imagenes_en_carpeta(ruta_carpeta, extension='*'):
     # Combinar la ruta de la carpeta con el patrón de búsqueda
@@ -87,7 +92,8 @@ def cifrar_frase_con_desplazamiento(frase):
 
     # Obtener la lista de nombres de archivos de imágenes en la carpeta "imagenes"
     ruta_carpeta_imagenes = 'imagenes'
-    archivos_imagenes = obtener_nombres_imagenes_en_carpeta(ruta_carpeta_imagenes)
+    archivos_imagenes = obtener_nombres_imagenes_en_carpeta(
+        ruta_carpeta_imagenes)
 
     num_imagenes = len(archivos_imagenes)
 
@@ -118,7 +124,8 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
     palabras = frase_cifrada.split()
     frase_descifrada = ""
     for palabra, desplazamiento in zip(palabras, desplazamientos):
-        palabra_descifrada = cifrar(palabra, -desplazamiento)  # Invertir el desplazamiento para descifrar
+        # Invertir el desplazamiento para descifrar
+        palabra_descifrada = cifrar(palabra, -desplazamiento)
         frase_descifrada += palabra_descifrada + " "
     return frase_descifrada.strip()
 
