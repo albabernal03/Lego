@@ -85,8 +85,18 @@ def obtener_nombres_imagenes_en_carpeta(ruta_carpeta, extension='*'):
 
     return nombres_imagenes
 
+def limpiar_texto(texto): #quitar tildes, dieeresis
+    texto = texto.replace('á', 'a')
+    texto = texto.replace('é', 'e')
+    texto = texto.replace('í', 'i')
+    texto = texto.replace('ó', 'o')
+    texto = texto.replace('ú', 'u')
+    texto = texto.replace('ü', 'u')
+    return texto
+
 
 def cifrar_frase_con_desplazamiento(frase):
+    frase = limpiar_texto(frase)
     palabras = frase.split()
     desplazamientos = []  # Lista para almacenar los desplazamientos utilizados
 
