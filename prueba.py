@@ -18,6 +18,7 @@ color_ranges = {
     'negro': ([0, 0, 0], [180, 255, 50], 5)
 }
 
+
 def procesar_imagen(image_path):
     image = cv2.imread(image_path)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -32,38 +33,47 @@ def procesar_imagen(image_path):
 
     return total_desplazamiento
 
+
 def cifrar(texto, desplazamiento):
     resultado = ""
     for char in texto:
         if char.isalpha():
-            shift = (ord(char.lower()) - ord('a') + desplazamiento) % 26 + ord('a')
+            shift = (ord(char.lower()) - ord('a') +
+                     desplazamiento) % 26 + ord('a')
             resultado += chr(shift) if char.islower() else chr(shift).upper()
         else:
             resultado += char
     return resultado
+
 
 def descifrar(texto_cifrado, desplazamientos):
     palabras = texto_cifrado.split()
     frase_descifrada = ""
     desplazamientos = [int(d) for d in desplazamientos.split(",")]
     for palabra, desplazamiento in zip(palabras, desplazamientos):
-        palabra_descifrada = cifrar(palabra, -desplazamiento)  # Invertir el desplazamiento para descifrar
+        # Invertir el desplazamiento para descifrar
+        palabra_descifrada = cifrar(palabra, -desplazamiento)
         frase_descifrada += palabra_descifrada + " "
     return frase_descifrada.strip()
 
+
 def cifrar_descifrar(action, text, desplazamiento):
     if action == 'Cifrar':
-        desplazamiento = procesar_imagen('imagenes/tele.png')  # Replace with the actual image path
+        # Replace with the actual image path
+        desplazamiento = procesar_imagen('imagenes/tele.png')
         return cifrar(text, desplazamiento)
     elif action == 'Descifrar':
         return descifrar(text, desplazamiento)
+
 
 iface = gr.Interface(
     fn=cifrar_descifrar,
     inputs=[
         gr.Dropdown(choices=["Cifrar", "Descifrar"], label="Acción"),
         gr.Textbox(label="Texto"),
-        gr.Textbox(label="Desplazamiento", placeholder="Enter comma-separated values for decryption")  # Changed 'default' to 'placeholder'
+        # Changed 'default' to 'placeholder'
+        gr.Textbox(label="Desplazamiento",
+                   placeholder="Enter comma-separated values for decryption")
     ],
     outputs="text",
     title="Taller de Criptografía con LEGO",
