@@ -111,12 +111,14 @@ def cifrar_frase_con_desplazamiento(frase):
     with open("desplazamientos.txt", "w") as f:
         f.write(", ".join(map(str, desplazamientos)))
 
-    return frase_cifrada.strip()
+    return frase_cifrada.strip(), desplazamientos
 
 
 def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
     palabras = frase_cifrada.split()
     frase_descifrada = ""
+    #desplazamientos es un str de numeros separados por comas
+    desplazamientos = list(map(int, desplazamientos.split(',')))
     for palabra, desplazamiento in zip(palabras, desplazamientos):
         palabra_descifrada = cifrar(palabra, -desplazamiento)  # Invertir el desplazamiento para descifrar
         frase_descifrada += palabra_descifrada + " "
@@ -128,7 +130,7 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
     frase = "Hola mundo tu!"
 
     # Llama a la función cifrar_frase_con_desplazamiento con la frase de prueba
-    frase_cifrada = cifrar_frase_con_desplazamiento(frase)
+    frase_cifrada, desplazamientos = cifrar_frase_con_desplazamiento(frase)
 
     # Imprime la frase cifrada y los desplazamientos utilizados
     print("Frase cifrada:", frase_cifrada)
@@ -140,13 +142,24 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
 if __name__ == "__main__":
     main()'''
 
+def cifrar_descifrar(action, text, desplazamiento):
+    if action == 'Cifrar':
+        frase_cifrada, desplazamientos = cifrar_frase_con_desplazamiento(text)
+        return frase_cifrada
+    elif action == 'Descifrar':
+        return descifrar_frase_con_desplazamiento(text, desplazamiento)
+
 
 iface = gr.Interface(
-    fn=cifrar_frase_con_desplazamiento,
-    inputs=gr.Textbox(label="Texto"),
+    fn=cifrar_descifrar,
+    inputs=[
+        gr.Dropdown(choices=["Cifrar", "Descifrar"], label="Acción"),
+        gr.Textbox(label="Texto"),
+        gr.Textbox(label="Desplazamiento", placeholder="Enter comma-separated values for decryption")
+    ],
     outputs="text",
     title="Taller de Criptografía con LEGO",
-    description="Utiliza este herramienta para cifrar o descifrar mensajes usando el cifrado César."
+    description="Utiliza esta herramienta para cifrar o descifrar mensajes usando el cifrado César."
 )
 
 iface.launch()
