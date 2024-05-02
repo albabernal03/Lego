@@ -3,6 +3,7 @@ import numpy as np
 import os
 import glob
 import gradio as gr
+import shutil
 
 # Diccionario con los rangos de colores en HSV y los desplazamientos asociados
 color_ranges = {
@@ -141,6 +142,17 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
         frase_descifrada += palabra_descifrada + " "
     return frase_descifrada.strip()
 
+def insertar_imagen(imagen):
+    # Directorio de destino para las imágenes
+    directorio_destino = 'imagenes'
+
+    # Verificar si el directorio existe, si no, crearlo
+    if not os.path.exists(directorio_destino):
+        os.makedirs(directorio_destino)
+
+    # Copiar la imagen al directorio de destino
+    shutil.copy(imagen, directorio_destino)
+
 
 '''def main():
     # Define una frase de prueba
@@ -159,24 +171,29 @@ def descifrar_frase_con_desplazamiento(frase_cifrada, desplazamientos):
 if __name__ == "__main__":
     main()'''
 
-def cifrar_descifrar(action, text, desplazamiento):
+
+def main(action, text, desplazamiento, imagen):
     if action == 'Cifrar':
         frase_cifrada, desplazamientos = cifrar_frase_con_desplazamiento(text)
         return frase_cifrada
     elif action == 'Descifrar':
         return descifrar_frase_con_desplazamiento(text, desplazamiento)
+    elif action == 'Insertar Imagen':
+        insertar_imagen(imagen)
+        return "Imagen insertada correctamente."
 
 
 iface = gr.Interface(
-    fn=cifrar_descifrar,
+    fn=main,
     inputs=[
-        gr.Dropdown(choices=["Cifrar", "Descifrar"], label="Acción"),
+        gr.Dropdown(choices=["Cifrar", "Descifrar", "Insertar Imagen"], label="Acción"),
         gr.Textbox(label="Texto"),
-        gr.Textbox(label="Desplazamiento", placeholder="Enter comma-separated values for decryption")
+        gr.Textbox(label="Desplazamiento", placeholder="Enter comma-separated values for decryption"),
+        gr.Image(label="Imagen", type="filepath")
     ],
     outputs="text",
     title="Taller de Criptografía con LEGO",
-    description="Utiliza esta herramienta para cifrar o descifrar mensajes usando el cifrado César."
+    description="Utiliza esta herramienta para cifrar o descifrar mensajes usando el cifrado César y procesar imágenes."
 )
 
 iface.launch()
