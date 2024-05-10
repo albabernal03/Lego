@@ -186,6 +186,10 @@ Ahora hemos hecho la interfaz usando Gradio:
 
 ![code8](https://github.com/albabernal03/Lego/assets/91721855/d315db6a-5b94-43ae-b690-3a9dce48db54)
 
+![interfaz](https://github.com/albabernal03/Lego/assets/91721855/a32c8549-7c49-40ac-a2da-30dbac264f33)
+
+![image](https://github.com/albabernal03/Lego/assets/91721855/2ad8b34f-45fe-4d9d-8ed6-7a36e3de3ecd)
+
 
 
 
