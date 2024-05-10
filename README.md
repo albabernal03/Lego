@@ -176,15 +176,16 @@ Esta función se encarga de descifrar cada una de las palabras de la frase aplic
 
 ![code6](https://github.com/albabernal03/Lego/assets/91721855/1ff47fb7-4ce2-4f9e-94f4-2fddb49b6d86)
 
-Todo esto cifra utilizando las imágenes de los distintos colores de los legos el mensaje requerido:
+## Función de Insertar imagen
 
-![code7](https://github.com/albabernal03/Lego/assets/91721855/e61c1c5f-2bbf-43c1-9647-08a01bf39875)
+Hemos añadido la función para poder insertar más imágenes a la hora de cifrar y descifrar mensajes.
+
+![code7](https://github.com/albabernal03/Lego/assets/91721855/2bf07fd5-0511-4de5-9ff8-c8cb8a11ad6f)
 
 Ahora hemos hecho la interfaz usando Gradio:
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/e70de3ed-99f1-42c4-9868-db8ff0db0e9c)
+![code8](https://github.com/albabernal03/Lego/assets/91721855/d315db6a-5b94-43ae-b690-3a9dce48db54)
 
-![image](https://github.com/albabernal03/Lego/assets/91721855/949df851-d9b8-4353-b7dd-bcba192fa4e2)
 
 
 
